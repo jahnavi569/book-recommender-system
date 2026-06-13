@@ -35,26 +35,6 @@ def recommend_book(book_name, num_recommendations):
         return [f"Error: {e}"]
 
 
-# Sidebar
-st.sidebar.title("📖 About Project")
-
-st.sidebar.info(
-    """
-    This Book Recommendation System uses:
-
-    • Collaborative Filtering
-
-    • K-Nearest Neighbors (KNN)
-
-    • Cosine Similarity
-
-    • Streamlit
-
-    • Scikit-Learn
-
-    Built as a Machine Learning Portfolio Project.
-    """
-)
 
 # Main Title
 st.title("📚 BookMatch AI")
@@ -75,7 +55,12 @@ selected_book = st.selectbox(
     book_pivot.index
 )
 
-
+num_recommendations = st.slider(
+    "Number of Recommendations",
+    min_value=3,
+    max_value=10,
+    value=5
+)
 
 # Button
 if st.button("🔍 Recommend Books"):
@@ -89,4 +74,5 @@ if st.button("🔍 Recommend Books"):
 
     for idx, book in enumerate(recommendations, start=1):
         st.write(f"**{idx}. {book}**")
+
 
